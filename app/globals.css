@@ -12,3 +12,7 @@
     @apply bg-gray-600
     duration-300 cursor-pointer;
 }
+
+.subNavbarHover {
+    @apply hover:underline underline-offset-2 cursor-pointer decoration-[1px] duration-200
+}
