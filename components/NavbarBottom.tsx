@@ -16,7 +16,7 @@ const NavbarBottom = () => {
                         alt="Phone Img"
                         className="bg-blue-500 w-6"
                     />
-                    <p>Give us a call!</p>
+                    <p>Give us a call!</p> 
                     <FiChevronDown />
                     <span className="w-[1px] h-4 bg-white inline-flex ml-2"></span>
                 </div>
