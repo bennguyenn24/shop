@@ -1,7 +1,10 @@
 import './globals.css'
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
+import HeroSection from '@/components/HeroSection';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,8 +20,13 @@ export default function RootLayout({
   return (
     <>
     <html lang="en">
-    <Navbar />
       <body className={inter.className}>{children}</body>
+      <main className='herosection'>
+      <Navbar />
+        <div className='max-w-contentContainer mx-auto bg-white'>
+        <HeroSection />
+        </div>
+      </main>
     </html>
     </>
   )
