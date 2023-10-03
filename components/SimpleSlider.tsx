@@ -9,6 +9,7 @@ import {
     sliderImgFour,
     sliderImgFive,
 } from "@/public/assets/images";
+import BannerText from "./BannerText";
 
 interface Props {}
 
@@ -20,7 +21,34 @@ export default class SimpleSlider extends Component<Props> {
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
-        };
+            initialSlide: 0,
+            responsive: [
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                  }
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
+                }
+              ]
+            };
 
         return (
             <div>
@@ -32,11 +60,42 @@ export default class SimpleSlider extends Component<Props> {
                             alt="Snow Crab"
                             priority
                         />
-                        <div className="absolute w-60 h-full top-0 left-4 flex flex-col gap-3 text-white">
-                            <h1 className="text-extrabold text-xl">Explore our collection</h1>
-                            <p className="text-sm leading-5">New equisite tasting</p>
-                            <button className="bg-white text-black text-sm font-semibold rounded-lg w-24 cursor-pointer h-8 border-[1px] border-black">Shop now</button>
-                        </div>
+                        <BannerText
+                            className="absolute w-60 h-full top-5 left-4 flex flex-col gap-3 text-white"
+                            title="Explore our collection"
+                            description="New Equisite Tastings"
+                            btnText="Shop now"
+                        />
+                    </div>
+                    <div className="w-full h-[410px] relative">
+                        <Image
+                            className="w-full h-full object-cover rounded-lg"
+                            src={sliderImgTwo}
+                            alt="Steaks"
+                        />
+                    </div>
+                    <div className="w-full h-[410px] relative">
+                        <Image
+                            className="w-full h-full object-cover rounded-lg"
+                            src={sliderImgThree}
+                            alt="Ribeye"
+                        />
+                    </div>
+                    <div className="w-full h-[410px] relative">
+                        <Image
+                            className="w-full h-full object-cover rounded-lg"
+                            src={sliderImgFour}
+                            alt="Snow Crab"
+                            priority
+                        />
+                    </div>
+                    <div className="w-full h-[410px] relative">
+                        <Image
+                            className="w-full h-full object-cover rounded-lg"
+                            src={sliderImgFive}
+                            alt="Snow Crab"
+                            priority
+                        />
                     </div>
                 </Slider>
             </div>
