@@ -7,7 +7,12 @@ const HeroSection = () => {
             <div className="w-2/3 rounded-lg h-[410px] shadow-bannerShadow relative">
                 <SimpleSlider />
             </div>
-            <div className="w-1/3 border-[1px] border-gray-400 rounded-lg shadow-bannerShadow p-4 flex flex-col justify-between"></div>
+            <div className="w-1/3 border-[1px] border-gray-400 rounded-lg shadow-bannerShadow p-4 flex flex-col justify-between">
+                <div className="">
+                    <h2 className="text-xl font-semibold text-black">Exclusive Pick of the Day</h2>
+                    <p className="text-zinc-600 underline underline-offset-2"> View our collection</p>
+                </div>
+            </div>
         </div>
     );
 };
