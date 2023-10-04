@@ -10,17 +10,21 @@ import {
     sliderImgFive,
 } from "@/public/assets/images";
 import BannerText from "./BannerText";
+import SamplePreviousArrow from "./SamplePreviousArrow"
+import SampleNextArrow from "./SampleNextArrow"
 
 interface Props {}
 
 export default class SimpleSlider extends Component<Props> {
     render() {
         const settings = {
-            dots: true,
+            dots: false,
             infinite: true,
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
+            nextArrow: <SampleNextArrow />,
+            prevArrow: <SamplePreviousArrow />,
             initialSlide: 0,
             responsive: [
                 {
@@ -29,7 +33,7 @@ export default class SimpleSlider extends Component<Props> {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true
+                    dots: true,
                   }
                 },
                 {
@@ -44,7 +48,7 @@ export default class SimpleSlider extends Component<Props> {
                   breakpoint: 480,
                   settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
                   }
                 }
               ]
