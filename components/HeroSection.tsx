@@ -1,6 +1,7 @@
 "use client";
+
 import SimpleSlider from "./SimpleSlider";
-import {heroImg} from "@/public/assets/images"
+import { heroImg } from "@/public/assets/images";
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -11,10 +12,18 @@ const HeroSection = () => {
             </div>
             <div className="w-1/3 border-[1px] border-gray-400 rounded-lg shadow-bannerShadow p-4 pt-2 flex flex-col justify-between">
                 <div className="">
-                    <h2 className="text-xl font-semibold text-black">Exclusive Pick of the Day</h2>
-                    <p className="text-zinc-600 underline underline-offset-2 mb-6"> View our collection</p>
+                    <h2 className="text-xl font-semibold text-black">
+                        Exclusive Pick of the Day
+                    </h2>
+                    <p className="text-zinc-600 underline underline-offset-2 mb-6">
+                        {" "}
+                        View our collection
+                    </p>
                 </div>
-                <Image className=" h-full object-cover"src={heroImg} alt="Hero Img"
+                <Image
+                    className=" h-full object-cover"
+                    src={heroImg}
+                    alt="Hero Img"
                 />
             </div>
         </div>
