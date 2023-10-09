@@ -8,7 +8,7 @@ import NavbarBottom from "./NavbarBottom";
 
 const Navbar = () => {
     return (
-        <div className="w-full bg-gray-900 text-white">
+        <div className="w-full bg-gray-900 text-white top-0">
             <div className="w-full h-full border-b-[1px] border-b-white">
                 <div className="max-w-container mx-auto h-20 px-4 flex items-center gap-2">
                     {/* Logo */}

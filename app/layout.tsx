@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +23,7 @@ export default function RootLayout({
                 <body className={inter.className}>
                     <Navbar />
                     {children}
+                <Footer />
                 </body>
             </html>
         </>
