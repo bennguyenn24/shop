@@ -7,7 +7,7 @@ import navIcon3 from "../../public/navIcon3.svg";
 
 const Footer = () => {
     return (
-        <footer id="footer">
+        <footer className="fixed bottom-0" id="footer">
             <div className="p-8 bg-gray-900 text-gray-200">
                 <div className="max-w-7xl mx-auto">
                     {/* Location */}
