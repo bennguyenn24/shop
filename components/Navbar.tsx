@@ -1,10 +1,10 @@
-import React from "react";
 import Image from "next/image";
 import logo from "../public/assets/images/logo.png";
 import { IoSearchOutline } from "react-icons/io5";
 import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import NavbarBottom from "./NavbarBottom";
+import Link from "next/link";
 
 const Navbar = () => {
     return (
@@ -12,14 +12,16 @@ const Navbar = () => {
             <div className="w-full h-full border-b-[1px] border-b-white">
                 <div className="max-w-container mx-auto h-20 px-4 flex items-center gap-2">
                     {/* Logo */}
-                    <div className="h-12 px-5 rounded-full bg-transparent flex items-center justify-between gap-2 cursor-pointer">
-                        <Image
-                            src={logo}
-                            className="w-24 mb-4 mt-4"
-                            alt="logo"
-                            unoptimized
-                        />
-                    </div>
+                    <Link href="/">
+                        <div className="h-12 px-5 rounded-full bg-transparent flex items-center justify-between gap-2 cursor-pointer">
+                            <Image
+                                src={logo}
+                                className="w-24 mb-4 mt-4"
+                                alt="logo"
+                                unoptimized
+                            />
+                        </div>
+                    </Link>
 
                     {/* Departments*/}
                     <div className="navBarHover">
