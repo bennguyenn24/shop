@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import logo from "../public/assets/images/logo.png";
 import { IoSearchOutline } from "react-icons/io5";
@@ -49,7 +50,7 @@ const Navbar = () => {
                             </p>
                         </div>
                     </div>
- 
+
                     {/* Search Input*/}
                     <div className="h-10 flex flex-1 relative">
                         <input
@@ -76,13 +77,15 @@ const Navbar = () => {
                         </div>
                     </div>
                     {/* Cart */}
-                    <div className="flex flex-col justify-center items-center mt-2 gap-2 h-12 px-5 rounded-full bg-transparent hover:bg-gray-600 duration-300 relative">
-                        <BsCart2 className="text-2xl" />
-                        <p>$0.00</p>
-                        <span className="absolute w-4 h-4 bg-blue text-black top-0 right-3 rounded-full flex items-center justify-center text-xs">
-                            0
-                        </span>
-                    </div>
+                    <Link href="/cart">
+                        <div className="flex flex-col justify-center items-center mt-2 gap-2 h-12 px-5 rounded-full bg-transparent hover:bg-gray-600 duration-300 relative">
+                            <BsCart2 className="text-2xl" />
+                            <p>$0.00</p>
+                            <span className="absolute w-4 h-4 bg-blue text-black top-0 right-3 rounded-full flex items-center justify-center text-xs">
+                                0
+                            </span>
+                        </div>
+                    </Link>
                 </div>
             </div>
             <NavbarBottom />
