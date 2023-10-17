@@ -30,7 +30,6 @@ export default async function ProductPage({
             <div>
                 <h2 className="font-semibold">{product.name}</h2>
                 <p>{product.description}</p>
-
                 <p>${product.price}</p>
             </div>
         </div>
