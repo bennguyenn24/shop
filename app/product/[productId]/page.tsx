@@ -37,7 +37,7 @@ export default async function ProductPage({
                         yesterday
                     </p>
                     <div className="px-2 py-4 border border-gray-600 rounded-md flex flex-col gap-6">
-                        <div>
+                        <div className="flex justify-between items-center">
                             <div className="flex gap-2">
                                 <button
                                     className="px-2 py-[1px] font-semibold 
@@ -49,9 +49,15 @@ export default async function ProductPage({
                                     Great for fine-dining
                                 </button>
                             </div>
-                            <IoMdHeartEmpty />
-                            
+                            <IoMdHeartEmpty className="text-gray-600 text-2xl" />
                         </div>
+                    </div>
+                    {/* Product Info  */}
+                    <div>
+                        <h2 className="font-xl font-semibold underline underline-offset-4">{product.name}</h2>
+                        <p>
+                            {product.description}
+                        </p>
                     </div>
                 </div>
             </div>
