@@ -5,6 +5,8 @@ import { getProducts } from "@/helpers/getProducts";
 export default async function Home() {
     const products = await getProducts();
 
+    console.log(products)
+
     return (
         <>
             <main className="herosection">

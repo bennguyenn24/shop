@@ -6,7 +6,10 @@ interface ProductsProps {
 }
 
 const Products = ({ products }: ProductsProps) => {
-    console.log(products[0]);
+    if (!products) {
+        throw new Error("Products could not be loaded.")
+    }
+
     return (
         <div>
             <div className="flex col-span-4">
@@ -16,7 +19,7 @@ const Products = ({ products }: ProductsProps) => {
             </div>
 
             <div className="py-24 px-10 grid grid-cols-4 gap-4">
-                {products.map((product: Product) => (
+                {products && products.map((product: Product) => (
                     <div
                         key={product.id}
                         className="border-gray-600 group shadow-xl"
