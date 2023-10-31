@@ -3,6 +3,7 @@ import { FiChevronDown } from "react-icons/fi";
 import { FaPlaceOfWorship } from "react-icons/fa";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { phoneImg } from "../public/assets/images";
+import Link from "next/link";
 
 const NavbarBottom = () => {
     return (
@@ -16,7 +17,7 @@ const NavbarBottom = () => {
                         alt="Phone Img"
                         className="bg-blue-500 w-6"
                     />
-                    <p>Give us a call!</p> 
+                    <p>Give us a call!</p>
                     <FiChevronDown />
                     <span className="w-[1px] h-4 bg-white inline-flex ml-2"></span>
                 </div>
@@ -28,9 +29,15 @@ const NavbarBottom = () => {
                 </div>
             </div>
             <ul className="flex items-center gap-4">
-                <li className="subNavbarHover">Deals</li>
-                <li className="subNavbarHover">About</li>
-                <li className="subNav">Home</li>
+                <Link href="/deals">
+                    <li className="subNavbarHover">Deals</li>
+                </Link>
+                <Link href="/about">
+                    <li className="subNavbarHover">About</li>
+                </Link>
+                <Link href="/">
+                    <li className="subNav">Home</li>
+                </Link>
             </ul>
         </div>
     );

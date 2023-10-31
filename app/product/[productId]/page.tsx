@@ -83,9 +83,7 @@ export default async function ProductPage({
                     </div>
                     <div className="flex flex-col gap-2">
                         <p>
-                            <span className="font-semibold">
-                                $20/month
-                            </span>{" "}
+                            <span className="font-semibold">$20/month</span>{" "}
                             <span className="font-bold">withAffirm</span>
                             {"  "}
                             <span className="text-sm underline underline-offset-2">
@@ -95,12 +93,17 @@ export default async function ProductPage({
                         <p className="text-xs text-zinc-500 flex items-center gap-2">
                             {" "}
                             Price when purchased online
-                            <span><BsInfoCircle /></span>
+                            <span>
+                                <BsInfoCircle />
+                            </span>
                         </p>
                     </div>
-                    <div>
-                        <button className="rounded-full w-32 h-10 bg-gray-300 hover:bg-gray-400">Add to cart</button>
+                    <div className="border-b-[1px] border-b-slate-300 pb-4">
+                        <button className="rounded-full w-32 h-10 bg-gray-300 hover:bg-gray-400">
+                            Add to cart
+                        </button>
                     </div>
+ 
                 </div>
             </div>
         </div>
