@@ -3,8 +3,10 @@ import Image from "next/image";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsStarFill, BsInfoCircle } from "react-icons/bs";
 import { FaShippingFast } from "react-icons/fa";
-import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import Popover from "@/components/Popover";
+import AddToCartButton from "@/components/AddToCartButton";
+
 
 export default async function ProductPage({
     params,
@@ -99,11 +101,8 @@ export default async function ProductPage({
                         </p>
                     </div>
                     <div className="border-b-[1px] border-b-slate-300 pb-4">
-                        <button className="rounded-full w-32 h-10 bg-gray-300 hover:bg-gray-400">
-                            Add to cart
-                        </button>
+                            <AddToCartButton product={product} />
                     </div>
- 
                 </div>
             </div>
         </div>
