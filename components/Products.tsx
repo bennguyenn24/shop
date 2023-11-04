@@ -1,5 +1,7 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
+import toast, { Toaster } from 'react-hot-toast';
 
 interface ProductsProps {
     products: Product[];
@@ -9,6 +11,9 @@ const Products = ({ products }: ProductsProps) => {
     if (!products) {
         throw new Error("Products could not be loaded.")
     }
+
+    const notify = () => toast('Item has been added to cart');
+    
 
     return (
         <div>
@@ -40,7 +45,7 @@ const Products = ({ products }: ProductsProps) => {
                                 {product.name}
                             </h2>
                             <div className="flex justify-between py-2 px-4">
-                                <button className="w-20 h-9 bg-gray-900 text-white rounded-full flex gap-1 items-center justify-center hover:bg-gray-600 duration-300">
+                                <button className="w-20 h-9 bg-gray-900 text-white rounded-full flex gap-1 items-center justify-center hover:bg-gray-600 duration-300" onClick={notify}>
                                     +
                                 </button>
                                 <button className="w-24 h-9 bg-white text-black border-black border-[1px] rounded-full flex gap-1 items-center justify-center hover:bg-gray-600 duration-300">

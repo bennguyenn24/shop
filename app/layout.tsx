@@ -1,6 +1,4 @@
 import "./globals.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -21,11 +19,20 @@ export default function RootLayout({
     return (
         <>
             <html lang="en">
-                <Toaster/>
+                <Toaster
+                    toastOptions={{
+                        className: "",
+                        style: {
+                            padding: "16px",
+                            background:"#e2e7f2",
+                            color: "black"
+                        },
+                    }}
+                />
                 <body className={inter.className}>
                     <Navbar />
                     {children}
-                <Footer />
+                    <Footer />
                 </body>
             </html>
         </>

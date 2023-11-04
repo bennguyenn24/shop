@@ -13,6 +13,9 @@ import BannerText from "./BannerText";
 import SamplePreviousArrow from "./SamplePreviousArrow"
 import SampleNextArrow from "./SampleNextArrow"
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 interface Props {}
 
 export default class SimpleSlider extends Component<Props> {
