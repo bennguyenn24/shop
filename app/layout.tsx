@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,14 +19,15 @@ export default function RootLayout({
 }) {
     return (
         <>
+        <ClerkProvider>
             <html lang="en">
                 <Toaster
                     toastOptions={{
                         className: "",
                         style: {
                             padding: "16px",
-                            background:"#e2e7f2",
-                            color: "black"
+                            background: "#e2e7f2",
+                            color: "black",
                         },
                     }}
                 />
@@ -35,6 +37,7 @@ export default function RootLayout({
                     <Footer />
                 </body>
             </html>
+            </ClerkProvider>
         </>
     );
 }
