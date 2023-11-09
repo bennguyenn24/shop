@@ -9,8 +9,14 @@ import NavbarBottom from "./NavbarBottom";
 import Link from "next/link";
 import { useState } from "react";
 import CartDisplay from "./CartDisplay";
+import { SignIn, UserButton } from "@clerk/nextjs";
+import type { User } from "@clerk/nextjs/server";
 
-const Navbar = () => {
+interface NavbarProps {
+    user: User;
+}
+
+const Navbar = ({ user }: NavbarProps) => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -73,12 +79,23 @@ const Navbar = () => {
                             <h2 className="font-semibold">My Items</h2>
                         </div>
                     </div>
+
                     <div className="navBarHover hover:bg-gray-600 duration-300">
-                        <AiOutlineUser className="text-lg" />
-                        <div>
-                            <p className="text-xs">Sign In</p>
-                            <h2 className="font-semibold">Account</h2>
-                        </div>
+                        {!user ? (
+                            <Link className="flex gap-1" href="/sign-in">
+                                <AiOutlineUser className="text-lg" />
+                                <div>
+                                    <h2 className="font-semibold">Account</h2>
+                                </div>
+                            </Link>
+                        ) : (
+                            <div className="flex gap-2 items-center">
+                                <UserButton />
+                                <div>
+                                    <h2 className="font-semibold">Account</h2>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     <div className="flex items-center gap-2">

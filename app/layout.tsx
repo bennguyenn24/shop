@@ -4,7 +4,8 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, currentUser } from "@clerk/nextjs";
+import type { User } from "@clerk/nextjs/server";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,31 +13,32 @@ export const metadata: Metadata = {
     title: "Steakhouse Society",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    const user = (await currentUser()) as User;
     return (
         <>
-        <ClerkProvider>
-            <html lang="en">
-                <Toaster
-                    toastOptions={{
-                        className: "",
-                        style: {
-                            padding: "16px",
-                            background: "#e2e7f2",
-                            color: "black",
-                        },
-                    }}
-                />
-                <body className={inter.className}>
-                    <Navbar />
-                    {children}
-                    <Footer />
-                </body>
-            </html>
+            <ClerkProvider>
+                <html lang="en">
+                    <Toaster
+                        toastOptions={{
+                            className: "",
+                            style: {
+                                padding: "16px",
+                                background: "#e2e7f2",
+                                color: "black",
+                            },
+                        }}
+                    />
+                    <body className={inter.className}>
+                        <Navbar user={user} />
+                        {children}
+                        <Footer />
+                    </body>
+                </html>
             </ClerkProvider>
         </>
     );
