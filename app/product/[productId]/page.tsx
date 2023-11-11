@@ -15,9 +15,7 @@ export default async function ProductPage({
 }) {
     const { productId } = params;
 
-    const { data: product } = await axios.get(
-        `${process.env.HOST_URL}/api/products/${productId}`
-    );
+    const product = await axios.get(`/api/products`);
 
     if (!product) {
         throw new Error("Product failed to load.");

@@ -3,7 +3,7 @@ import Products from "@/components/Products";
 import { getProducts } from "@/helpers/getProducts";
 
 export default async function Home() {
-    const products = await getProducts();
+    const products = (await getProducts()) as any;
 
     return (
         <>
@@ -15,4 +15,4 @@ export default async function Home() {
             </main>
         </>
     );
-} 
+}

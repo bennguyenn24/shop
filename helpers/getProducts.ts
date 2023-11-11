@@ -1,13 +1,9 @@
-import axios from "axios";
-import products from "@/data/products.json"
+import { prisma } from "@/db/script";
 
 export const getProducts = async () => {
     try {
-       // const res = await axios.get(`${process.env.HOST_URL}/api/products`);
-
-        const productsData = products
-
-        return productsData
+        const products = await prisma.product.findMany();
+        return products;
     } catch (error: any) {
         console.error("PRODUCTS/GET:", error.message);
     }
