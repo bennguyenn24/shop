@@ -3,7 +3,7 @@ import Products from "@/components/Products";
 import { getProducts } from "@/helpers/getProducts";
 
 export default async function Home() {
-    const products = (await getProducts()) as any;
+    const products = (await getProducts()) as Product[]
 
     return (
         <>

@@ -35,7 +35,7 @@ const Products = ({ products }: ProductsProps) => {
                                     className="scale-100 group-hover:scale-105 duration-300"
                                     layout="fill"
                                     objectFit="cover"
-                                    src={product.img}
+                                    src={product.imgUrl}
                                     alt={product.name}
                                 />
                             </Link>

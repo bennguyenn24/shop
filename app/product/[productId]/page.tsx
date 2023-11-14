@@ -6,6 +6,7 @@ import { FaShippingFast } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import Popover from "@/components/Popover";
 import AddToCartButton from "@/components/AddToCartButton";
+import { getProduct } from "@/helpers/getProduct";
 
 
 export default async function ProductPage({
@@ -13,9 +14,9 @@ export default async function ProductPage({
 }: {
     params: { productId: string };
 }) {
-    const { productId } = params;
+    const productId = Number(params.productId);
 
-    const product = await axios.get(`/api/products`);
+    const product = (await getProduct(productId)) as Product;
 
     if (!product) {
         throw new Error("Product failed to load.");
@@ -27,7 +28,7 @@ export default async function ProductPage({
                 <div className="w-2/3 h-full flex items-center justify-center overflow-hidden relative">
                     <Image
                         className="rounded-md w-[60%] transform-origin-top-left cursor-move duration-500"
-                        src={product.img}
+                        src={product.imgUrl}
                         alt={product.name}
                         width={300}
                         height={100}
