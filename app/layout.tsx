@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider, currentUser } from "@clerk/nextjs";
 import type { User } from "@clerk/nextjs/server";
+import { dark, neobrutalism, shadesOfPurple } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,16 @@ export default async function RootLayout({
     const user = (await currentUser()) as User;
     return (
         <>
-            <ClerkProvider>
+            <ClerkProvider
+                appearance={{
+                    baseTheme: [dark, neobrutalism],
+                    variables: { colorPrimary: "red" },
+                    signIn: {
+                        baseTheme: [shadesOfPurple],
+                        variables: { colorPrimary: "blue" },
+                    },
+                }}
+            >
                 <html lang="en">
                     <Toaster
                         toastOptions={{
@@ -35,7 +45,7 @@ export default async function RootLayout({
                     />
                     <body className={inter.className}>
                         <Navbar user={user} />
-                        {children}
+                        <main className="min-h-[60vh]">{children}</main>
                         <Footer />
                     </body>
                 </html>
