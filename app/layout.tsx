@@ -24,12 +24,10 @@ export default async function RootLayout({
         <>
             <ClerkProvider
                 appearance={{
-                    baseTheme: [dark, neobrutalism],
-                    variables: { colorPrimary: "red" },
-                    signIn: {
-                        baseTheme: [shadesOfPurple],
-                        variables: { colorPrimary: "blue" },
-                    },
+                    variables: {
+                        colorPrimary: "#1f2937",
+                        colorText: "black"
+                      }
                 }}
             >
                 <html lang="en">
