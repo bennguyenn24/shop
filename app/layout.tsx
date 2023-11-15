@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider, currentUser } from "@clerk/nextjs";
 import type { User } from "@clerk/nextjs/server";
-import { dark, neobrutalism, shadesOfPurple } from "@clerk/themes";
+import { CartContextProvider } from "@/contexts/CartContext";
+import ClientWrapper from "@/components/ClientWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +27,8 @@ export default async function RootLayout({
                 appearance={{
                     variables: {
                         colorPrimary: "#1f2937",
-                        colorText: "black"
-                      }
+                        colorText: "black",
+                    },
                 }}
             >
                 <html lang="en">
