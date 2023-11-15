@@ -13,6 +13,27 @@ model Product {
   imgUrl      String
   description String
   price       Int
-  created_at  DateTime
-  modified_at DateTime
+  created_at  DateTime @default(now())
+  modified_at DateTime @default(now())
+
+  CartItem CartItem[]
+}
+
+model UserCart {
+  id     Int        @id @default(autoincrement())
+  userId String     @unique
+  items  CartItem[]
+}
+
+model CartItem {
+  id          Int       @id @default(autoincrement())
+  userId      String
+  product     Product   @relation(fields: [productId], references: [id])
+  quantity    Int
+  totalPrice  Int
+  created_at  DateTime  @default(now())
+  modified_at DateTime  @default(now())
+  UserCart    UserCart? @relation(fields: [userCartId], references: [id])
+  userCartId  Int?
+  productId   Int
 }
