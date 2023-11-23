@@ -7,7 +7,6 @@ import { Toaster } from "react-hot-toast";
 import { ClerkProvider, currentUser } from "@clerk/nextjs";
 import type { User } from "@clerk/nextjs/server";
 import { CartContextProvider } from "@/contexts/CartContext";
-import ClientWrapper from "@/components/ClientWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +19,6 @@ export default async function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const user = (await currentUser()) as User;
     return (
         <>
             <ClerkProvider
@@ -32,21 +30,23 @@ export default async function RootLayout({
                 }}
             >
                 <html lang="en">
-                    <Toaster
-                        toastOptions={{
-                            className: "",
-                            style: {
-                                padding: "16px",
-                                background: "#e2e7f2",
-                                color: "black",
-                            },
-                        }}
-                    />
-                    <body className={inter.className}>
-                        <Navbar user={user} />
-                        <main className="min-h-[60vh]">{children}</main>
-                        <Footer />
-                    </body>
+                    <CartContextProvider>
+                        <Toaster
+                            toastOptions={{
+                                className: "",
+                                style: {
+                                    padding: "16px",
+                                    background: "#e2e7f2",
+                                    color: "black",
+                                },
+                            }}
+                        />
+                        <body className={inter.className}>
+                            <Navbar />
+                            <main className="min-h-[60vh]">{children}</main>
+                            <Footer />
+                        </body>
+                    </CartContextProvider>
                 </html>
             </ClerkProvider>
         </>
