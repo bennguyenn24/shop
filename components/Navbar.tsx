@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import logo from "../public/assets/images/logo.png";
 import { IoSearchOutline } from "react-icons/io5";
@@ -9,15 +8,14 @@ import NavbarBottom from "./NavbarBottom";
 import Link from "next/link";
 import { useState } from "react";
 import CartDisplay from "./CartDisplay";
-import { SignIn, UserButton } from "@clerk/nextjs";
+import { SignIn, UserButton, currentUser } from "@clerk/nextjs";
 import type { User } from "@clerk/nextjs/server";
 
-interface NavbarProps {
-    user: User;
-}
 
-const Navbar = ({ user }: NavbarProps) => {
-    const [open, setOpen] = useState(false);
+
+const Navbar = async () => {
+    const user = (await currentUser()) as User;
+    // const [open, setOpen] = useState(false);
 
     return (
         <div className="w-full bg-gray-900 text-white top-0 sticky z-50">
@@ -99,13 +97,13 @@ const Navbar = ({ user }: NavbarProps) => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <button
+                        {/* <button
                             className="md:hidden"
                             onClick={() => setOpen(!open)}
                         >
                             {" "}
                             <GiHamburgerMenu />
-                        </button>
+                        </button> */}
 
                         {/* Cart */}
 
