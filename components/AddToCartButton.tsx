@@ -19,7 +19,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
         <button
             onClick={handleAddToCart}
             type="button"
-            className="rounded-full w-32 h-10 bg-gray-300 hover:bg-gray-400"
+            className="rounded-full w-32 h-12 text-white bg-gray-900 hover:bg-gray-400"
         >
             Add to cart
         </button>

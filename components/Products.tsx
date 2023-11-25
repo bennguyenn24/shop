@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import toast, { Toaster } from 'react-hot-toast';
+import AddToCartButton from "./AddToCartButton";
 
 interface ProductsProps {
     products: Product[];
@@ -46,7 +47,7 @@ const Products = ({ products }: ProductsProps) => {
                             </h2>
                             <div className="flex justify-between py-2 px-4">
                                 <button className="w-20 h-9 bg-gray-900 text-white rounded-full flex gap-1 items-center justify-center hover:bg-gray-600 duration-300" onClick={notify}>
-                                    +
+                                    <AddToCartButton product={product} />
                                 </button>
                                 <button className="w-24 h-9 bg-white text-black border-black border-[1px] rounded-full flex gap-1 items-center justify-center hover:bg-gray-600 duration-300">
                                     Details
