@@ -2,7 +2,17 @@
 
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
-const CartContext = createContext({});
+interface CartContextProps {
+    cart: any[];
+    addToCart: (cartItem: any) => void;
+    removeFromCart: (cartItemId: number) => void;
+}
+
+const CartContext = createContext<CartContextProps>({
+    cart: [],
+    addToCart: () => {},
+    removeFromCart: () => {},
+});
 
 const useCart = () => useContext(CartContext);
 const localStorageCart = JSON.parse(localStorage.getItem('cart') || '[]') 
@@ -21,9 +31,10 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
 
     const removeFromCart = (cartItemId: number) => {
         const modifiedCart = cart.filter(
-            (cartItem) => cartItem.id != cartItemId
-        );
+            (cartItem) => cartItem.id !== cartItemId);
         setCart(modifiedCart);
+        localStorage.removeItem('cart');
+        localStorage.setItem('cart', JSON.stringify(modifiedCart))
     };
 
     const value = { cart, addToCart, removeFromCart };
