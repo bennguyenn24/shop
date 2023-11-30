@@ -1,6 +1,12 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import {
+    ReactNode,
+    createContext,
+    useContext,
+    useEffect,
+    useState,
+} from "react";
 
 interface CartContextProps {
     cart: any[];
@@ -15,26 +21,54 @@ const CartContext = createContext<CartContextProps>({
 });
 
 const useCart = () => useContext(CartContext);
-const localStorageCart = JSON.parse(localStorage.getItem('cart') || '[]') 
+const localStorageCart = JSON.parse(localStorage.getItem("cart") || "[]");
 
 const CartContextProvider = ({ children }: { children: ReactNode }) => {
     const [cart, setCart] = useState(localStorageCart);
-    
-    useEffect(() =>{
-        localStorage.setItem('cart', JSON.stringify(cart));
 
-    }, [cart])
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
-    const addToCart = (cartItem: any) => {
-        setCart((prevCart) => [...prevCart, cartItem]);
+    // Make sure it increments instead of adding a new item
+    const addToCart = (product: Product, quantity = 1) => {
+        // Figure out if this item already exists in cart.
+        const productExistsinCart = cart.filter(
+            (cartItem: any) => cartItem.id === product.id
+        ).length;
+
+        if (Boolean(productExistsinCart)) {
+            const currentCartItem = cart.filter(
+                (cartItem: CartItem) => product.id === cartItem.id
+            )[0];
+
+            const updatedCartItem = {
+                ...currentCartItem,
+                quantity: currentCartItem.quantity + quantity,
+            };
+
+            const updatedCart = cart.map((cartItem: CartItem) =>
+                product.id === cartItem.id ? updatedCartItem : cartItem
+            );
+
+            setCart(updatedCart);
+        } else {
+            //If it does not exist, then add it to cart
+            const cartItem = {
+                ...product,
+                quantity,
+            };
+
+            setCart((prevCart) => [...prevCart, cartItem]);
+        }
     };
 
-    const removeFromCart = (cartItemId: number) => {
+    const removeFromCart = (productId: number) => {
         const modifiedCart = cart.filter(
-            (cartItem) => cartItem.id !== cartItemId);
+            (cartItem: CartItem) => cartItem.id != productId
+        );
+
         setCart(modifiedCart);
-        localStorage.removeItem('cart');
-        localStorage.setItem('cart', JSON.stringify(modifiedCart))
     };
 
     const value = { cart, addToCart, removeFromCart };
