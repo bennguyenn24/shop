@@ -4,14 +4,14 @@ import { useCart } from "@/contexts/CartContext";
 import toast from "react-hot-toast";
 
 interface RemoveFromCartButtonProps {
-    product: Product;
+    cartItemId: number;
 }
 
-export default function RemoveFromCartButton({ product }: RemoveFromCartButtonProps) {
+export default function RemoveFromCartButton({ cartItemId }: RemoveFromCartButtonProps) {
     const { removeFromCart } = useCart() as CartContextProps;
 
     const handleRemoveFromCart = () => {
-        removeFromCart(product);
+        removeFromCart(cartItemId);
         toast.success("Removed from cart.")
     };
 
