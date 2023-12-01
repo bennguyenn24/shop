@@ -43,7 +43,7 @@ const CartPage = () => {
                                 </p>
                                 <p className="text-sm text-zinc-500">
                                     {cartItem.description}
-                                </p>
+                                </p> 
                                 <p className="text-sm text-zinc-500 ">
                                     ${cartItem.price}
                                 </p>
@@ -54,7 +54,7 @@ const CartPage = () => {
                         <button><RemoveFromCartButton cartItemId={cartItem.id}/></button>
                     <div className="w-28 h-9 border-zinc-400 rounded-full text-base font-semibold text-black flex items-center justify-between px-3">
                         <button className="bg-gray-200 p-2 rounded-md hover:text-gray-700"><HiArrowDown/></button>
-                        <span>{cartItem.quantity}1</span>
+                        <span>{cartItem.quantity}</span>
                         <button className="bg-gray-200 p-2 rounded-md"><HiArrowUp/></button>
                     </div>
                 </div>
