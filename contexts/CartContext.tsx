@@ -21,13 +21,15 @@ const CartContext = createContext<CartContextProps>({
 });
 
 const useCart = () => useContext(CartContext);
-const localStorageCart = JSON.parse(localStorage.getItem("cart") || "[]");
+const localStorageCart = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("cart") || "[]") : [];
 
 const CartContextProvider = ({ children }: { children: ReactNode }) => {
     const [cart, setCart] = useState(localStorageCart);
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
     }, [cart]);
 
     // Make sure it increments instead of adding a new item
