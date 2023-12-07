@@ -20,14 +20,15 @@ const CartPage = () => {
                     </h2>
                     <div className=":w-8/12 w-full py-4 flex flex-wrap">
                         <h1 className="font-semibold mb-4">
-                            Here are your items <br />
+                            Here are your items: <br />
                         </h1>
                         <ul>
                             {cart.map((cartItem) => (
-                                <CartCard
+                                <div className="mb-6"><CartCard
                                     key={cartItem.id}
                                     cartItem={cartItem}
                                 />
+                                </div>
                             ))}
                         </ul>
                     </div>
