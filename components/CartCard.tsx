@@ -44,7 +44,7 @@ const CartCard = ({ cartItem }: CartCardProps) => {
                     </button>
                     <span>{cartItem.quantity}</span>
                     <button className="bg-gray-200 p-2 rounded-md">
-                        <AddQuantityButton />
+                       <HiArrowUp />
                     </button>
                 </div>
             </div>
