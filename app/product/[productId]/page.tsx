@@ -5,7 +5,6 @@ import Popover from "@/components/Popover";
 import AddToCartButton from "@/components/AddToCartButton";
 import { getProduct } from "@/helpers/getProduct";
 
-
 export default async function ProductPage({
     params,
 }: {
@@ -93,11 +92,14 @@ export default async function ProductPage({
                             Price when purchased online
                             <span>
                                 <BsInfoCircle />
-                            </span> 
+                            </span>
                         </p>
                     </div>
                     <div className="border-b-[1px] border-b-slate-300 pb-4">
+                        <button className="rounded-full w-32 h-12 text-white bg-gray-900 hover:bg-gray-400">
                             <AddToCartButton product={product} />
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>
