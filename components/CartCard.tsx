@@ -4,6 +4,7 @@ import Image from "next/image";
 import { HiArrowDown, HiArrowUp } from "react-icons/hi";
 import RemoveFromCartButton from "./RemoveFromCartButton";
 import AddToCartButton from "./AddToCartButton";
+import RemoveQuantityFromCartButton from "./RemoveQuantityFromCartButton";
 
 interface CartCardProps {
     cartItem: CartItem;
@@ -39,13 +40,11 @@ const CartCard = ({ cartItem }: CartCardProps) => {
                     <RemoveFromCartButton cartItemId={cartItem.id} />
                 </button>
                 <div className="w-28 h-9 border-zinc-400 rounded-full text-base font-semibold text-black flex items-center justify-between px-3">
-                    <button className="bg-gray-200 p-2 rounded-md hover:text-gray-700">
-                        <HiArrowDown />
-                    </button>
+                   <RemoveQuantityFromCartButton product={cartItem} />
                     <span>{cartItem.quantity}</span>
                     <AddToCartButton
                         title="+"
-                        className="w-28 h-9 border-zinc-400 rounded-full text-base font-semibold text-black flex items-center justify-between px-3"
+                        className="bg-gray-900 p-2 rounded-md hover:text-gray-700"
                         product={cartItem}
                     />
                 </div>
