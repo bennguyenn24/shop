@@ -78,26 +78,20 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
         setCart(modifiedCart);
     };
 
-    const removeQuantity = (productId: number) => {
+    const removeQuantity = (product: Product) => {
         const modifiedCart = cart.map(
-            // map through the cart items
-            // if cart item == productId
-            //  remove 1 from the cart
             (cartItem: CartItem) =>
-                cartItem.id == productId
+                cartItem.id === product.id && cartItem.quantity > 0
                     ? { ...cartItem, quantity: cartItem.quantity - 1 }
                     : cartItem
         );
-
-        // if user remove all items from the cart (use logic from above to remove that whole item
-        // modifiedCart.filter(cartItem => cartItem.quantity > 0)
-        // setCart(modifiedCart)
 
         const filteredCart = modifiedCart.filter(
             (cartItem: CartItem) => cartItem.quantity > 0
         );
         setCart(filteredCart);
     };
+    
 
     const value = { cart, addToCart, removeFromCart, removeQuantity };
 

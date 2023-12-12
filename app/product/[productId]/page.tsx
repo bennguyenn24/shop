@@ -96,10 +96,11 @@ export default async function ProductPage({
                         </p>
                     </div>
                     <div className="border-b-[1px] border-b-slate-300 pb-4">
-                        <button className="rounded-full w-32 h-12 text-white bg-gray-900 hover:bg-gray-400">
-                            <AddToCartButton product={product} />
-                            Add to Cart
-                        </button>
+                        <AddToCartButton
+                            product={product}
+                            className="rounded-full w-32 h-12 text-white bg-gray-900 hover:bg-gray-400"
+                            title="Add to Cart"
+                        />
                     </div>
                 </div>
             </div>
