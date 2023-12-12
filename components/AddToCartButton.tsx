@@ -5,23 +5,25 @@ import toast from "react-hot-toast";
 
 interface AddToCartButtonProps {
     product: Product;
+    className: string;
+    title: string;
 }
 
-export default function AddToCartButton({ product }: AddToCartButtonProps) {
+export default function AddToCartButton({
+    product,
+    className,
+    title,
+}: AddToCartButtonProps) {
     const { addToCart } = useCart() as CartContextProps;
 
     const handleAddToCart = () => {
         addToCart(product);
-        toast.success(`Added ${product.name} to cart.`)
+        toast.success(`Added ${product.name} to cart.`);
     };
 
     return (
-        <button
-            onClick={handleAddToCart}
-            type="button"
-            className="rounded-full w-32 h-12 text-white bg-gray-900 hover:bg-gray-400"
-        >
-            Add to cart
+        <button className={className} onClick={handleAddToCart} type="button">
+            {title}
         </button>
     );
 }
