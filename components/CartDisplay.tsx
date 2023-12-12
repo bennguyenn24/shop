@@ -7,9 +7,8 @@ import { BsCart2 } from "react-icons/bs";
 
 const CartDisplay = () => {
     const { cart } = useCart() as CartContextProps;
-    console.log(cart)
-    const cartLength = cart.length;
-    const cartTotal = cart.reduce((acc, item: Product) => acc + item.price, 0)
+    const cartLength = cart.reduce((acc, item: CartItem) => acc + item.quantity, 0);
+    const cartTotal = cart.reduce((acc, item: CartItem) => acc + (item.price * item.quantity), 0)
 
     return (
         <Link href="/cart">

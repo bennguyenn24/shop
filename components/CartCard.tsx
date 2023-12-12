@@ -3,14 +3,14 @@ import React from "react";
 import Image from "next/image";
 import { HiArrowDown, HiArrowUp } from "react-icons/hi";
 import RemoveFromCartButton from "./RemoveFromCartButton";
-import AddQuantityButton from "./AddQuantityButton";
+import AddToCartButton from "./AddToCartButton";
 
 interface CartCardProps {
     cartItem: CartItem;
 }
 
 const CartCard = ({ cartItem }: CartCardProps) => {
-    return ( 
+    return (
         <div className="flex items-center justify-between gap-4 border rounded-lg border-b-zinc-400 pb-4 bg-white shadow-md transition-transform transform hover:scale-110">
             <div className="w-3/4 flex items-center gap-4">
                 <div className="relative w-[200px] h-[140px]">
@@ -43,9 +43,11 @@ const CartCard = ({ cartItem }: CartCardProps) => {
                         <HiArrowDown />
                     </button>
                     <span>{cartItem.quantity}</span>
-                    <button className="bg-gray-200 p-2 rounded-md">
-                       <HiArrowUp />
-                    </button>
+                    <AddToCartButton
+                        title="+"
+                        className="w-28 h-9 border-zinc-400 rounded-full text-base font-semibold text-black flex items-center justify-between px-3"
+                        product={cartItem}
+                    />
                 </div>
             </div>
         </div>
