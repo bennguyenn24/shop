@@ -78,10 +78,10 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
         setCart(modifiedCart);
     };
 
-    const removeQuantity = (product: Product) => {
+    const removeQuantity = (productId: number) => {
         const modifiedCart = cart.map(
             (cartItem: CartItem) =>
-                cartItem.id === product.id && cartItem.quantity > 0
+                cartItem.id === productId && cartItem.quantity > 0
                     ? { ...cartItem, quantity: cartItem.quantity - 1 }
                     : cartItem
         );

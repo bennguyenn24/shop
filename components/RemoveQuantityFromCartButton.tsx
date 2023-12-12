@@ -17,7 +17,7 @@ export default function RemoveFromCartButton({
     const { removeQuantity } = useCart() as CartContextProps;
 
     const handleDecrementFromCart = () => {
-        removeQuantity(product);
+        removeQuantity(product.id);
         toast.success("Removed");
     };
 
