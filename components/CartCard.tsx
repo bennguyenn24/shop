@@ -40,11 +40,15 @@ const CartCard = ({ cartItem }: CartCardProps) => {
                     <RemoveFromCartButton cartItemId={cartItem.id} />
                 </button>
                 <div className="w-28 h-9 border-zinc-400 rounded-full text-base font-semibold text-black flex items-center justify-between px-3">
-                   <RemoveQuantityFromCartButton product={cartItem} />
+                    <RemoveQuantityFromCartButton
+                        product={cartItem}
+                        title="-"
+                        className="bg-gray-400 p-2 rounded-md hover:text-gray-700"
+                    />
                     <span>{cartItem.quantity}</span>
                     <AddToCartButton
                         title="+"
-                        className="bg-gray-900 p-2 rounded-md hover:text-gray-700"
+                        className="bg-gray-400 p-2 rounded-md hover:text-gray-700"
                         product={cartItem}
                     />
                 </div>

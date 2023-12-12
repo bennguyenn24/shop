@@ -18,7 +18,7 @@ export default function RemoveFromCartButton({
 
     const handleDecrementFromCart = () => {
         removeQuantity(product);
-        toast.success(`Added ${product.name} to cart.`);
+        toast.success("Removed");
     };
 
     return (
