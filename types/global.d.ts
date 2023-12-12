@@ -19,4 +19,5 @@ interface CartContextProps {
     cart: [];
     addToCart: (product: any) => void;
     removeFromCart: (id: number) => void;
+    removeQuantity: (id: number) => void;
 }

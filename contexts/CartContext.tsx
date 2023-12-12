@@ -12,22 +12,27 @@ interface CartContextProps {
     cart: any[];
     addToCart: (cartItem: any) => void;
     removeFromCart: (cartItemId: number) => void;
+    removeQuantity: (cartItem: any) => void;
 }
 
 const CartContext = createContext<CartContextProps>({
     cart: [],
     addToCart: () => {},
     removeFromCart: () => {},
+    removeQuantity: () => {},
 });
 
 const useCart = () => useContext(CartContext);
-const localStorageCart = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("cart") || "[]") : [];
+const localStorageCart =
+    typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem("cart") || "[]")
+        : [];
 
 const CartContextProvider = ({ children }: { children: ReactNode }) => {
     const [cart, setCart] = useState(localStorageCart);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
+        if (typeof window !== "undefined") {
             localStorage.setItem("cart", JSON.stringify(cart));
         }
     }, [cart]);
@@ -73,7 +78,28 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
         setCart(modifiedCart);
     };
 
-    const value = { cart, addToCart, removeFromCart };
+    const removeQuantity = (productId: number) => {
+        const modifiedCart = cart.map(
+            // map through the cart items
+            // if cart item == productId
+            //  remove 1 from the cart
+            (cartItem: CartItem) =>
+                cartItem.id == productId
+                    ? { ...cartItem, quantity: cartItem.quantity - 1 }
+                    : cartItem
+        );
+
+        // if user remove all items from the cart (use logic from above to remove that whole item
+        // modifiedCart.filter(cartItem => cartItem.quantity > 0)
+        // setCart(modifiedCart)
+
+        const filteredCart = modifiedCart.filter(
+            (cartItem: CartItem) => cartItem.quantity > 0
+        );
+        setCart(filteredCart);
+    };
+
+    const value = { cart, addToCart, removeFromCart, removeQuantity };
 
     return (
         <CartContext.Provider value={value}>{children}</CartContext.Provider>
