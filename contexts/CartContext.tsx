@@ -92,8 +92,10 @@ const CartContextProvider = ({ children }: { children: ReactNode }) => {
         setCart(filteredCart);
     };
     
+    const cartLength = cart.reduce((acc: number, item: CartItem) => acc + item.quantity, 0);
+    const cartTotal = cart.reduce((acc : number, item: CartItem) => acc + (item.price * item.quantity), 0)
 
-    const value = { cart, addToCart, removeFromCart, removeQuantity };
+    const value = { cart, addToCart, removeFromCart, removeQuantity, cartLength, cartTotal };
 
     return (
         <CartContext.Provider value={value}>{children}</CartContext.Provider>

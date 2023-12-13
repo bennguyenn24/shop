@@ -12,9 +12,9 @@ interface CartCardProps {
 
 const CartCard = ({ cartItem }: CartCardProps) => {
     return (
-        <div className="flex items-center justify-between gap-4 border rounded-lg border-b-zinc-400 pb-4 bg-white shadow-md transition-transform transform hover:scale-110">
-            <div className="w-3/4 flex items-center gap-4">
-                <div className="relative w-[200px] h-[140px]">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 border rounded-lg border-b-zinc-400 pb-4 bg-white shadow-md transition-transform transform hover:scale-110">
+            <div className="w-full md:w-3/4 flex flex-col md:flex-row items-center gap-4">
+                <div className="relative w-full md:w-[200px] h-[140px] md:h-[140px]">
                     <Image
                         src={cartItem.imgUrl}
                         alt={cartItem.name}
@@ -22,7 +22,7 @@ const CartCard = ({ cartItem }: CartCardProps) => {
                         objectFit="cover"
                     />
                 </div>
-                <div className=" max-w-[300px]">
+                <div className="max-w-full md:max-w-[300px]">
                     <p className="text-base text-zinc-900 font-bold">
                         {cartItem.name}
                     </p>
@@ -35,11 +35,11 @@ const CartCard = ({ cartItem }: CartCardProps) => {
                 </div>
             </div>
 
-            <div className="mt-2 flex items-center gap-6">
+            <div className="mt-2 md:mt-0 flex items-center gap-6">
                 <button>
                     <RemoveFromCartButton cartItemId={cartItem.id} />
                 </button>
-                <div className="w-28 h-9 border-zinc-400 rounded-full text-base font-semibold text-black flex items-center justify-between px-3">
+                <div className="w-full md:w-28 h-9 border-zinc-400 rounded-full text-base font-semibold text-black flex items-center justify-between px-3 gap-2">
                     <RemoveQuantityFromCartButton
                         product={cartItem}
                         title="-"

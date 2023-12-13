@@ -1,20 +1,20 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useCart } from "@/contexts/CartContext";
 import CartCard from "@/components/CartCard";
+import Popover from "@/components/Popover";
 
 interface ProductsProps {
     products: Product[];
 }
 
 const CartPage = () => {
-    const { cart } = useCart();
+    const { cart, cartTotal, cartLength } = useCart();
 
     return (
         <div className="rounded-lg">
-            <div className="container mx-auto flex mt-8">
-                
-                <div className="w-2/3 p-4">
+            <div className="container mx-auto flex flex-col mt-8 md:flex-row">
+                <div className="md:w-2/3 p-4">
                     <h2 className="text-2xl font-extrabold mb-4 flex justify-center border-b-8 border-solid border-blue-500">
                         Shopping Cart
                     </h2>
@@ -24,24 +24,43 @@ const CartPage = () => {
                         </h1>
                         <ul>
                             {cart.map((cartItem) => (
-                                <div className="mb-6"><CartCard
-                                    key={cartItem.id}
-                                    cartItem={cartItem}
-                                />
+                                <div className="mb-6">
+                                    <CartCard
+                                        key={cartItem.id}
+                                        cartItem={cartItem}
+                                    />
                                 </div>
                             ))}
                         </ul>
                     </div>
                 </div>
 
-                <div className="w-1/3 p-4">
+                <div className="md:w-1/3 p-4">
                     <h2 className="text-2xl font-bold mb-4 flex justify-center border-b-8 border-solid border-blue-800">
                         Order Summary
                     </h2>
-                    <div className="w-1/3 text-right flex flex-col items-end gap-1">
-                        <h2>Price</h2>
-                        <h3>Taxes</h3>
-                        <h4>Total</h4>
+                    <div className="p-4 md:h-auto h-[300px] border-[1px] md:w-84 border-zinc-400 rounded-md justify-center gap-4">
+                        <button className="bg-gray-600 hover:bg-gray-900 w-full md:w-48 h-10 mb-6 rounded-lg font-semibold duration-300 text-white">
+                            Continue to checkout
+                        </button>
+                        <h2>Price: ${cartTotal}.00</h2>
+                        <span>
+                            <h2>
+                                Tax: Calculated at Checkout
+                                <Popover
+                                    initialText={""}
+                                    title="California Taxes"
+                                    description="Shipping out of CA will be taxed under CA Jurisdiction"
+                                />{" "}
+                            </h2>
+                        </span>
+                        <div className="w-full flex flex-col gap-4 border-b-[1px] border-b-zinc-400 pb-4">
+                            <div className="flex flex-col gap-1">
+                                <div className="text-sm flex justify-between">
+                                    <p className="font-semibold mt-2">Subtotal: <span> ({cartLength} items)</span> </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
