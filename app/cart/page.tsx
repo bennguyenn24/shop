@@ -1,8 +1,10 @@
 "use client";
 import React, { useEffect } from "react";
+import axios from 'axios'
 import { useCart } from "@/contexts/CartContext";
 import CartCard from "@/components/CartCard";
 import Popover from "@/components/Popover";
+import { useRouter } from "next/navigation";
 
 interface ProductsProps {
     products: Product[];
@@ -10,6 +12,15 @@ interface ProductsProps {
 
 const CartPage = () => {
     const { cart, cartTotal, cartLength } = useCart();
+    const router = useRouter()
+   
+    const handleCheckout = async () => {
+        const res = await axios.post('/api/checkout_sessions', cart)
+
+        if (res.status === 201) {
+            router.push(res.data);
+        }
+    }
 
     return (
         <div className="rounded-lg">
@@ -40,7 +51,7 @@ const CartPage = () => {
                         Order Summary
                     </h2>
                     <div className="p-4 md:h-auto h-[300px] border-[1px] md:w-84 border-zinc-400 rounded-md justify-center gap-4">
-                        <button className="bg-gray-600 hover:bg-gray-900 w-full md:w-48 h-10 mb-6 rounded-lg font-semibold duration-300 text-white">
+                        <button onClick= {handleCheckout} className="bg-gray-600 hover:bg-gray-900 w-full md:w-48 h-10 mb-6 rounded-lg font-semibold duration-300 text-white">
                             Continue to checkout
                         </button>
                         <h2>Price: ${cartTotal}.00</h2>
