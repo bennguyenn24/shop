@@ -17,3 +17,33 @@ model Product {
   modified_at   DateTime
   stripePriceId String?  @unique
 }
+
+model CartItem {
+  id            Int      @id @default(autoincrement())
+  name          String
+  imgUrl        String
+  description   String
+  price         Int
+  created_at    DateTime
+  modified_at   DateTime
+  stripePriceId String?  @unique
+  Order         Order?   @relation(fields: [orderId], references: [id])
+  orderId       Int?
+}
+
+model Order {
+  id          Int        @id @default(autoincrement())
+  status      OrderType
+  user_id     String
+  cart_items  CartItem[]
+  created_at  DateTime
+  modified_at DateTime
+  total_price Int
+}
+
+enum OrderType {
+  PROCESSING
+  DELIVERED
+  SHIPPING
+  CANCELED
+}
