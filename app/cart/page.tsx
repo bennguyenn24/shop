@@ -1,9 +1,10 @@
 "use client";
-import axios from 'axios'
+import axios from "axios";
 import { useCart } from "@/contexts/CartContext";
 import CartCard from "@/components/CartCard";
 import Popover from "@/components/Popover";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface ProductsProps {
     products: Product[];
@@ -11,17 +12,29 @@ interface ProductsProps {
 
 const CartPage = () => {
     const { cart, cartTotal, cartLength, clearCart } = useCart();
-    const router = useRouter()
-   
+    const router = useRouter();
+
+    const canCheckout = cart.length > 0;
+
     const handleCheckout = async () => {
         try {
-            const res = await axios.post('/api/checkout_sessions', cart);
+            // const resOrder = await axios.post("/api/orders", cart);
+
+            // if (resOrder.status !== 201)
+            //     throw new Error("Could not create order");
+
+            if (cart.length === 0) {
+                throw new Error("Cart is empty.");
+            }
+
+            const res = await axios.post("/api/checkout_sessions", cart);
             if (res.status === 201) {
                 clearCart();
                 router.push(res.data);
             }
-        } catch (error){
-            console.error('Error during checkout:', error);
+        } catch (error: any) {
+            toast.error(error.message);
+            console.error("Error during checkout:", error);
         }
     };
 
@@ -54,8 +67,12 @@ const CartPage = () => {
                         Order Summary
                     </h2>
                     <div className="p-4 md:h-auto h-[300px] border-[1px] md:w-84 border-zinc-400 rounded-md justify-center gap-4">
-                        <button onClick= {handleCheckout} className="bg-gray-600 hover:bg-gray-900 w-full md:w-48 h-10 mb-6 rounded-lg font-semibold duration-300 text-white">
-                            Continue to checkout
+                        <button
+                            disabled={!canCheckout}
+                            onClick={handleCheckout}
+                            className="disabled:cursor-not-allowed bg-gray-600 hover:bg-gray-900 w-full md:w-48 h-10 mb-6 rounded-lg font-semibold duration-300 text-white"
+                        >
+                            {canCheckout ? "Checkout" : "Cart is empty"}
                         </button>
                         <h2>Price: ${cartTotal}.00</h2>
                         <span>
@@ -71,7 +88,10 @@ const CartPage = () => {
                         <div className="w-full flex flex-col gap-4 border-b-[1px] border-b-zinc-400 pb-4">
                             <div className="flex flex-col gap-1">
                                 <div className="text-sm flex justify-between">
-                                    <p className="font-semibold mt-2">Subtotal: <span> ({cartLength} items)</span> </p>
+                                    <p className="font-semibold mt-2">
+                                        Subtotal:{" "}
+                                        <span> ({cartLength} items)</span>{" "}
+                                    </p>
                                 </div>
                             </div>
                         </div>
