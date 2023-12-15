@@ -10,16 +10,20 @@ interface ProductsProps {
 }
 
 const CartPage = () => {
-    const { cart, cartTotal, cartLength } = useCart();
+    const { cart, cartTotal, cartLength, clearCart } = useCart();
     const router = useRouter()
    
     const handleCheckout = async () => {
-        const res = await axios.post('/api/checkout_sessions', cart)
-
-        if (res.status === 201) {
-            router.push(res.data);
+        try {
+            const res = await axios.post('/api/checkout_sessions', cart);
+            if (res.status === 201) {
+                clearCart();
+                router.push(res.data);
+            }
+        } catch (error){
+            console.error('Error during checkout:', error);
         }
-    }
+    };
 
     return (
         <div className="rounded-lg">
