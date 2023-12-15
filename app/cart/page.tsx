@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect } from "react";
 import axios from 'axios'
 import { useCart } from "@/contexts/CartContext";
 import CartCard from "@/components/CartCard";
