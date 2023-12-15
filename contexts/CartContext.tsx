@@ -13,10 +13,14 @@ interface CartContextProps {
     addToCart: (cartItem: any) => void;
     removeFromCart: (cartItemId: number) => void;
     removeQuantity: (cartItem: any) => void;
+    cartTotal: number;
+    cartLength: number;
 }
 
 const CartContext = createContext<CartContextProps>({
     cart: [],
+    cartTotal: 0,
+    cartLength: 0,
     addToCart: () => {},
     removeFromCart: () => {},
     removeQuantity: () => {},
