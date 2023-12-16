@@ -1,5 +1,5 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const DOMAIN_URL = process.env.HOST_URL;
 

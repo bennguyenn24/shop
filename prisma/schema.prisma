@@ -8,33 +8,32 @@ datasource db {
 }
 
 model Product {
-  id            Int      @id @default(autoincrement())
+  id            Int        @id @default(autoincrement())
   name          String
   imgUrl        String
   description   String
   price         Int
   created_at    DateTime
   modified_at   DateTime
-  stripePriceId String?  @unique
+  stripePriceId String?    @unique
+  CartItem      CartItem[]
 }
 
 model CartItem {
   id            Int      @id @default(autoincrement())
-  name          String
-  imgUrl        String
-  description   String
-  price         Int
+  quantity      Int
+  productId     Int
+  product       Product  @relation(fields: [productId], references: [id])
   created_at    DateTime
   modified_at   DateTime
-  stripePriceId String?  @unique
-  Order         Order?   @relation(fields: [orderId], references: [id])
+  order         Order?   @relation(fields: [orderId], references: [id])
   orderId       Int?
 }
 
 model Order {
   id          Int        @id @default(autoincrement())
   status      OrderType
-  user_id     String
+  user_id     User      @relation(fields: [user_id], references: [id])
   cart_items  CartItem[]
   created_at  DateTime
   modified_at DateTime
