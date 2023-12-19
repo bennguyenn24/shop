@@ -18,19 +18,36 @@ const CartPage = () => {
 
     const handleCheckout = async () => {
         try {
-            // const resOrder = await axios.post("/api/orders", cart);
-
-            // if (resOrder.status !== 201)
-            //     throw new Error("Could not create order");
-
             if (cart.length === 0) {
                 throw new Error("Cart is empty.");
             }
 
-            const res = await axios.post("/api/checkout_sessions", cart);
-            if (res.status === 201) {
+            const checkoutRes = await axios.post(
+                "/api/checkout_sessions",
+                cart
+            );
+            console.log("Creating a stripe session...");
+
+            if (checkoutRes.status != 201) {
+                throw new Error("Checkout was not successful.");
+            }
+            console.log(
+                "Stripe session created with id: ",
+                checkoutRes.data.id
+            );
+
+            const orderResData = {
+                cart,
+                total_price: checkoutRes.data.amount_total,
+                checkout_session: checkoutRes.data.id,
+            };
+            const orderRes = await axios.post("/api/orders", orderResData);
+
+            console.log("Order created: ", orderRes.data);
+
+            if (orderRes.status === 201) {
                 clearCart();
-                router.push(res.data);
+                router.push(checkoutRes.data.url);
             }
         } catch (error: any) {
             toast.error(error.message);

@@ -18,5 +18,5 @@ export async function POST(request: NextRequest) {
         cancel_url: `${DOMAIN_URL}/checkout/canceled`,
     });
 
-    return NextResponse.json(session.url, { status: 201 });
+    return NextResponse.json(session, { status: 201 });
 }
