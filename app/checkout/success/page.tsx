@@ -15,7 +15,7 @@ const generateRandomConfirmationNumber = () => {
     return result;
 };
 
-const page = () => {
+const SuccessPage = () => {
     const [confirmationNumber, setConfirmationNumber] = useState("");
 
     useEffect(() => {
@@ -42,4 +42,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default SuccessPage;
