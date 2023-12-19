@@ -12,7 +12,7 @@ interface CartCardProps {
 
 const CartCard = ({ cartItem }: CartCardProps) => {
     return (
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 border rounded-lg border-b-zinc-400 pb-4 bg-white shadow-md transition-transform transform hover:scale-110">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 border rounded-lg border-b-zinc-400 pb-4 bg-white shadow-md transition-transform transform hover:scale-110 mb-6">
             <div className="w-full md:w-3/4 flex flex-col md:flex-row items-center gap-4">
                 <div className="relative w-full md:w-[200px] h-[140px] md:h-[140px]">
                     <Image

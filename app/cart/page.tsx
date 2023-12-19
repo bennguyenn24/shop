@@ -68,12 +68,10 @@ const CartPage = () => {
                         </h1>
                         <ul>
                             {cart.map((cartItem) => (
-                                <div className="mb-6">
-                                    <CartCard
-                                        key={cartItem.id}
-                                        cartItem={cartItem}
-                                    />
-                                </div>
+                                <CartCard
+                                    key={cartItem.id}
+                                    cartItem={cartItem}
+                                />
                             ))}
                         </ul>
                     </div>
