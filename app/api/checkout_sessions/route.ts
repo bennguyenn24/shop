@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
         price: item.stripePriceId,
         quantity: item.quantity,
     }));
-
+    
     const session = await stripe.checkout.sessions.create({
         line_items: modifiedItems,
         mode: "payment",
