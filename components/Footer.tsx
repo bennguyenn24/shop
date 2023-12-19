@@ -1,9 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import navIcon1 from "../../public/navIcon1.svg";
-import navIcon2 from "../../public/navIcon2.svg";
-import navIcon3 from "../../public/navIcon3.svg";
 
 const Footer = () => {
     return (
@@ -12,7 +9,7 @@ const Footer = () => {
                 <div className="max-w-7xl mx-auto">
                     {/* Location */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-                        <section className="mb-5">
+                        <section className="mb-5"> 
                             <h4 className="text-2xl font-semibold pb-4">
                                 FIND OUR RESTAURANTS
                             </h4>
