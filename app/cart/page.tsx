@@ -6,10 +6,6 @@ import Popover from "@/components/Popover";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-interface ProductsProps {
-    products: Product[];
-}
-
 const CartPage = () => {
     const { cart, cartTotal, cartLength, clearCart } = useCart();
     const router = useRouter();
@@ -30,7 +26,6 @@ const CartPage = () => {
             if (checkoutRes.status != 201) {
                 throw new Error("Checkout was not successful.");
             }
-           
 
             const orderResData = {
                 cart,
