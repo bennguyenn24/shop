@@ -26,15 +26,11 @@ const CartPage = () => {
                 "/api/checkout_sessions",
                 cart
             );
-            console.log("Creating a stripe session...");
 
             if (checkoutRes.status != 201) {
                 throw new Error("Checkout was not successful.");
             }
-            console.log(
-                "Stripe session created with id: ",
-                checkoutRes.data.id
-            );
+           
 
             const orderResData = {
                 cart,
@@ -43,14 +39,12 @@ const CartPage = () => {
             };
             const orderRes = await axios.post("/api/orders", orderResData);
 
-            console.log("Order created: ", orderRes.data);
-
             if (orderRes.status === 201) {
                 clearCart();
                 router.push(checkoutRes.data.url);
             }
         } catch (error: any) {
-            toast.error(error.message);
+            toast.error("Please sign in to continue checkout");
             console.error("Error during checkout:", error);
         }
     };
