@@ -30,22 +30,21 @@ export default async function ProductPage({
                         height={100}
                     />
                 </div>
-                <div className="w-1/3 h-full flex flex-col gap-2">
-                    <p className="w-3/4 p-2 text-gray-900 text-sm font-semibold border border-gray-600 rounded-md">
-                        This item has been recently brought! 500+ since
-                        yesterday
-                    </p>
-                    <div className="px-2 py-4 border border-gray-600 rounded-md flex flex-col gap-6">
+                <div className="w-1/3 h-full flex flex-col gap-4 p-4">
+                    <div className="text-gray-900 text-sm font-semibold border border-gray-600 rounded-md p-2">
+                        This item has been recently bought by 500+ customers since yesterday.
+                    </div>
+                    <div className="border border-gray-600 rounded-md p-4 flex flex-col gap-6">
                         <div className="flex justify-between items-center">
                             <div className="flex gap-2">
                                 <button
                                     className="px-2 py-[1px] font-semibold 
                              text-red-500 text-sm border-[1px] border-red-700 rounded-sm"
                                 >
-                                    Best seller
+                                    Best Seller
                                 </button>
                                 <button className="px-2 py-[1px] font-semibold text-gray-600 text-sm border-[1px] border-gray-700 rounded-sm">
-                                    Great for fine-dining
+                                    Great for Fine Dining
                                 </button>
                             </div>
                             <IoMdHeartEmpty className="text-gray-600 text-2xl" />
@@ -53,11 +52,11 @@ export default async function ProductPage({
                     </div>
                     {/* Product Info  */}
                     <div>
-                        <h2 className="font-xl font-semibold underline underline-offset-4">
+                        <h2 className="text-xl font-semibold underline underline-offset-4 mb-2">
                             {product.name}
                         </h2>
-                        <p>{product.description}</p>
-                        <div className="flex gap-2 items-center text-xs mt-2">
+                        <p className="text-gray-700 mb-4">{product.description}</p>
+                        <div className="flex items-center text-xs">
                             <div className="flex gap-1">
                                 <BsStarFill />
                                 <BsStarFill />
@@ -65,12 +64,9 @@ export default async function ProductPage({
                                 <BsStarFill />
                                 <BsStarFill />
                             </div>
-                            <p>50</p>
                         </div>
-                        <div className="flex items-end gap-2">
-                            <p className="pt-2 font-semibold">
-                                ${product.price} 1x100g
-                            </p>
+                        <div className="flex items-end gap-2 mt-2">
+                            <p className="font-semibold text-lg">${product.price} for 100g</p>
                             <Popover
                                 initialText="Show more information"
                                 title="Limited Quantity"
@@ -78,16 +74,16 @@ export default async function ProductPage({
                             />
                         </div>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 mt-4">
                         <p>
                             <span className="font-semibold">$20/month</span>{" "}
-                            <span className="font-bold">withAffirm</span>
+                            <span className="font-bold">with Affirm</span>
                             {"  "}
                             <span className="text-sm underline underline-offset-2">
                                 Learn how
                             </span>
                         </p>
-                        <p className="text-xs text-zinc-500 flex items-center gap-2">
+                        <p className="text-xs text-gray-500 flex items-center gap-2">
                             {" "}
                             Price when purchased online
                             <span>
@@ -95,7 +91,7 @@ export default async function ProductPage({
                             </span>
                         </p>
                     </div>
-                    <div className="border-b-[1px] border-b-slate-300 pb-4">
+                    <div className="border-b-[1px] border-slate-300 pb-4">
                         <AddToCartButton
                             product={product}
                             className="rounded-full w-32 h-12 text-white bg-gray-900 hover:bg-gray-400"
@@ -106,4 +102,4 @@ export default async function ProductPage({
             </div>
         </div>
     );
-}
+};
