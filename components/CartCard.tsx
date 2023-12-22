@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { HiArrowDown, HiArrowUp } from "react-icons/hi";
 import RemoveFromCartButton from "./RemoveFromCartButton";
 import AddToCartButton from "./AddToCartButton";
 import RemoveQuantityFromCartButton from "./RemoveQuantityFromCartButton";
