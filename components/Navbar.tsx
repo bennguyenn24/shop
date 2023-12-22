@@ -11,8 +11,6 @@ import CartDisplay from "./CartDisplay";
 import { SignIn, UserButton, currentUser } from "@clerk/nextjs";
 import type { User } from "@clerk/nextjs/server";
 
-
-
 const Navbar = async () => {
     const user = (await currentUser()) as User;
     // const [open, setOpen] = useState(false);
@@ -60,13 +58,14 @@ const Navbar = async () => {
                     </div>
 
                     {/* Search Input*/}
-                    <div className="h-10 flex-1 relative hidden md:flex">
+                    <div className="w-full sm:w-[300px] md:w-[70%] relative">
                         <input
-                            className="h-full w-full rounded-full px-4 text-black outline-none border-[1px] border-transparent
-                    focus-visible:black duration-200"
+                            className="p-2 px-4 rounded-lg w-full
+                            text-black outline-none border-transparent focus-visible:black duration-200"
                             type="text"
                             placeholder="Search our collection"
                         />
+
                         <span className="absolute w-8 h-8 rounded-full flex items-center justify-center bg-blue text-black top-1 right-1">
                             <IoSearchOutline />
                         </span>
