@@ -28,7 +28,6 @@ export default async function ProductPage({
                     width={500}
                     height={300}
                 />
-                // Carousel
             </div>
             <div className="w-1/2 px-8">
                 <h1 className="text-3xl font-semibold mb-4">{product.name}</h1>
