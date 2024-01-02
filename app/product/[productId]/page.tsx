@@ -19,8 +19,8 @@ export default async function ProductPage({
     }
 
     return (
-        <div className="container mx-auto mt-8 flex">
-            <div className="w-1/2">
+        <div className="container mx-auto mt-8 flex ">
+            <div className="w-1/2 mb-8">
                 <Image
                     className=""
                     src={product.imgUrl}
@@ -28,11 +28,19 @@ export default async function ProductPage({
                     width={500}
                     height={300}
                 />
+
             </div>
-            <div className="w-1/2 px-8">
+            <div className="w-1/2 px-8 inline-block">
                 <h1 className="text-3xl font-semibold mb-4">{product.name}</h1>
                 <p className="text-gray-600 mb-4">{product.description}</p>
                 <p className="text-2xl font-bold mb-4">{product.price}</p>
+                <div className="border-b-[1px] border-slate-300 pb-4">
+                 <AddToCartButton
+                     product={product}
+                     className="rounded-full w-32 h-12 text-white bg-gray-900 hover:bg-gray-400"
+                     title="Add to Cart"
+                 />
+           </div>
             </div>
         </div>
     );
@@ -109,13 +117,6 @@ export default async function ProductPage({
 //                         <BsInfoCircle />
 //                     </span>
 //                 </p>
-//             </div>
-//             <div className="border-b-[1px] border-slate-300 pb-4">
-//                 <AddToCartButton
-//                     product={product}
-//                     className="rounded-full w-32 h-12 text-white bg-gray-900 hover:bg-gray-400"
-//                     title="Add to Cart"
-//                 />
 //             </div>
 //         </div>
 //     </div>
