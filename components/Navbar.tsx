@@ -2,18 +2,17 @@ import Image from "next/image";
 import logo from "../public/assets/images/logo.png";
 import { IoSearchOutline } from "react-icons/io5";
 import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { BsCart2 } from "react-icons/bs";
 import NavbarBottom from "./NavbarBottom";
 import Link from "next/link";
-import { useState } from "react";
 import CartDisplay from "./CartDisplay";
-import { SignIn, UserButton, currentUser } from "@clerk/nextjs";
+import { UserButton, currentUser } from "@clerk/nextjs";
 import type { User } from "@clerk/nextjs/server";
+import SearchInput from "./SearchInput";
+import { getProducts } from "@/helpers/getProducts";
 
 const Navbar = async () => {
     const user = (await currentUser()) as User;
-    // const [open, setOpen] = useState(false);
+    const products = (await getProducts()) as Product[];
 
     return (
         <div className="w-full bg-gray-900 text-white top-0 sticky z-50">
@@ -58,18 +57,8 @@ const Navbar = async () => {
                     </div>
 
                     {/* Search Input*/}
-                    <div className="w-full sm:w-[300px] md:w-[70%] relative">
-                        <input
-                            className="p-2 px-4 rounded-lg w-full
-                            text-black outline-none border-transparent focus-visible:black duration-200"
-                            type="text"
-                            placeholder="Search our collection"
-                        />
+                    <SearchInput products={products}/>
 
-                        <span className="absolute w-8 h-8 rounded-full flex items-center justify-center bg-blue text-black top-1 right-1">
-                            <IoSearchOutline />
-                        </span>
-                    </div>
                     <div className="navBarHover hover:bg-gray-600 duration-300">
                         <AiOutlineHeart />
                         <div>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import {
-    heroImg,
     sliderImgOne,
     sliderImgTwo,
     sliderImgThree,
