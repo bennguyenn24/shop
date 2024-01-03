@@ -1,7 +1,4 @@
 import Image from "next/image";
-import { IoMdHeartEmpty } from "react-icons/io";
-import { BsStarFill, BsInfoCircle } from "react-icons/bs";
-import Popover from "@/components/Popover";
 import AddToCartButton from "@/components/AddToCartButton";
 import { getProduct } from "@/helpers/getProduct";
 
