@@ -39,7 +39,9 @@ const CartPage = () => {
                 router.push(checkoutRes.data.url);
             }
         } catch (error: any) {
-            toast.error("Please sign in to continue checkout");
+            toast.error(
+                "An error occurred during checkout. Please check console for details."
+            );
             console.error("Error during checkout:", error);
         }
     };
