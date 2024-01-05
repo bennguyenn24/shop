@@ -31,7 +31,10 @@ const config: Config = {
               lightText: "#46474a",
             },
             boxShadow: {
-              bannerShadow: "0 1px 2px 1px #00000026"
+              bannerShadow: "0 1px 2px 1px #00000026",
+            },
+            fontFamily: {
+                serif: ['var(--font-rokkitt)']
             }
         },
     },
