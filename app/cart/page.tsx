@@ -35,12 +35,12 @@ const CartPage = () => {
             const orderRes = await axios.post("/api/orders", orderResData);
 
             if (orderRes.status === 201) {
-                clearCart();
+                clearCart(); 
                 router.push(checkoutRes.data.url);
             }
         } catch (error: any) {
             toast.error(
-                "An error occurred during checkout. Please check console for details."
+                "An error occurred during checkout."
             );
             console.error("Error during checkout:", error);
         }
