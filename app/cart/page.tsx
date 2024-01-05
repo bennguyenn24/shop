@@ -32,6 +32,7 @@ const CartPage = () => {
                 total_price: checkoutRes.data.amount_total,
                 checkout_session: checkoutRes.data.id,
             };
+            
             const orderRes = await axios.post("/api/orders", orderResData);
 
             if (orderRes.status === 201) {
