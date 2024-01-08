@@ -19,15 +19,15 @@ const Products = ({ products }: ProductsProps) => {
                     CHECKOUT OUR COLLECTION
                 </span>
             </div>
-
-            <div className="py-24 px-10 grid grid-cols-4 gap-4">
+ 
+            <div className="py-12 px-4 lg:px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {products &&
                     products.map((product: Product) => (
                         <div
                             key={product.id}
-                            className="border-gray-600 group shadow-xl"
+                            className="border-gray-600 group shadow-2xl"
                         >
-                            <div className="relative w-64 h-64">
+                            <div className="relative h-64">
                                 <Link href={`/product/${product.id}`}>
                                     <Image
                                         className="scale-100 group-hover:scale-105 duration-300"
