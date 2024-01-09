@@ -16,8 +16,8 @@ export default async function ProductPage({
     }
 
     return (
-        <div className="container mx-auto mt-8 flex ">
-            <div className="w-1/2 mb-8">
+        <div className="container mx-auto mt-8 flex flex-col md:flex-row">
+            <div className="md:w-1/2 mb-8">
                 <Image
                     className=""
                     src={product.imgUrl}
@@ -27,7 +27,7 @@ export default async function ProductPage({
                 />
 
             </div>
-            <div className="w-1/2 px-8 inline-block">
+            <div className="md:w-1/2 px-8 inline-block">
                 <h1 className="text-3xl font-semibold mb-4">{product.name}</h1>
                 <p className="text-gray-600 mb-4">{product.description}</p>
                 <p className="text-2xl font-bold mb-4">{product.price}</p>
