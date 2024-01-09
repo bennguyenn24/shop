@@ -107,7 +107,9 @@ const Navbar = async () => {
             </div>
 
             {/* Alt Search bar for mobile */}
-            <SearchInput products={products} />
+            <div className="lg:hidden">
+                <SearchInput products={products} />
+            </div>
 
             <NavbarBottom />
         </div>

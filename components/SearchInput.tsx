@@ -66,7 +66,7 @@ const SearchInput = ({ products, isHiddenWhenOnMobileDevice }: SearchInputParams
     };
 
     return (
-        <div className={isHiddenWhenOnMobileDevice ? "hidden md:flex" : "px-4 py-2"}>
+        <div className={isHiddenWhenOnMobileDevice ? "hidden lg:flex" : "px-4 py-2"}>
             <div className="flex flex-1 relative flex-col gap-2 lg:flex-row lg:items-center">
                 <form
                     onSubmit={handleSearch}
