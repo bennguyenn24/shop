@@ -19,14 +19,17 @@ const Navbar = async () => {
             <div className="w-full h-full border-b-[1px] border-b-white">
                 <div className="max-w-container mx-auto h-20 px-4 flex items-center gap-2 justify-between">
                     {/* Logo */}
-                    <Link href="/">
-                        <div className="h-12 px-5 rounded-full bg-transparent flex items-center justify-between gap-2 cursor-pointer">
+                    <Link className="flex gap-1 items-center" href="/">
+                        <div className="h-12 rounded-full bg-transparent flex items-center justify-between gap-2 cursor-pointer">
                             <Image
                                 src={logo}
-                                className="w-24 mb-4 mt-4"
+                                className="w-16 md:w-20 mb-4 mt-4"
                                 alt="logo"
                                 unoptimized
                             />
+                        </div>
+                        <div className="text-xl font-semibold tracking-tight">
+                            Steakhouse Society
                         </div>
                     </Link>
 
@@ -57,7 +60,10 @@ const Navbar = async () => {
                     </div>
 
                     {/* Search Input*/}
-                    <SearchInput products={products}/>
+                    <SearchInput
+                        isHiddenWhenOnMobileDevice={true}
+                        products={products}
+                    />
 
                     <div className="navBarHover hover:bg-gray-600 duration-300">
                         <AiOutlineHeart />
@@ -101,17 +107,7 @@ const Navbar = async () => {
             </div>
 
             {/* Alt Search bar for mobile */}
-            <div className="h-10 flex flex-1 relative md:hidden">
-                <input
-                    className="h-full w-full rounded-full px-4 text-black outline-none border-[1px] border-transparent
-                    focus-visible:black duration-200"
-                    type="text"
-                    placeholder="Search our collection"
-                />
-                <span className="absolute w-8 h-8 rounded-full flex items-center justify-center bg-blue text-black top-1 right-1">
-                    <IoSearchOutline />
-                </span>
-            </div>
+            <SearchInput products={products} />
 
             <NavbarBottom />
         </div>
