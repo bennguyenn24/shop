@@ -9,9 +9,10 @@ import { IoSearchOutline } from "react-icons/io5";
 
 interface SearchInputParams {
     products: Product[];
+    isHiddenWhenOnMobileDevice?: boolean;
 }
 
-const SearchInput = ({ products }: SearchInputParams) => {
+const SearchInput = ({ products, isHiddenWhenOnMobileDevice }: SearchInputParams) => {
     // Form Handling
 
     // 1. Manage state using useState hook
@@ -65,56 +66,55 @@ const SearchInput = ({ products }: SearchInputParams) => {
     };
 
     return (
-        <div className="flex flex-1 relative flex-col gap-2">
-            {/* Searchbar */}
-            <form onSubmit={handleSearch}>
-                <input
-                    className="w-full h-10 rounded-full px-4 text-black outline-none border-[1px] border-transparent
-        focus-visible:black duration-200"
-                    type="text"
-                    placeholder="Search our collection"
-                    onChange={handleChangeSearch}
-                    value={searchTerm}
-                />
-
-                <button
-                    aria-label={`Search`}
-                    type="submit"
-                    className="absolute w-8 h-8 rounded-full flex items-center justify-center bg-blue text-black top-1 right-1"
+        <div className={isHiddenWhenOnMobileDevice ? "hidden md:flex" : "px-4 py-2"}>
+            <div className="flex flex-1 relative flex-col gap-2 lg:flex-row lg:items-center">
+                <form
+                    onSubmit={handleSearch}
+                    className="w-full lg:w-auto relative"
                 >
-                    <IoSearchOutline />
-                </button>
-            </form>
+                    <input
+                        className="w-full h-10 lg:w-64 rounded-sm md:rounded-full px-4 text-black outline-none border-[1px] border-transparent
+        focus-visible:black duration-200"
+                        type="text"
+                        placeholder="Search our collection"
+                        onChange={handleChangeSearch}
+                        value={searchTerm}
+                    />
 
-            {/* Searchbar Dropdown Container*/}
-            <ul className="bg-slate-900 w-full text-sm absolute top-11">
-                {filteredProducts.map((product) => (
-                    <li key={product.id}>
-                        <Link
-                            href={`/product/${product.id}`}
-                            onClick={clearSearch}
-                            className="flex gap-2 border-b-2 border-slate-600 items-center hover:bg-slate-800 duration-300"
-                        >
-                            <div className="relative w-[50px] h-[50px]">
-                                <Image
-                                    className="object-cover"
-                                    src={product.imgUrl}
-                                    alt={product.name}
-                                    fill
-                                />
-                            </div>
-                            <p>{product.name}</p>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+                    <button
+                        aria-label={`Search`}
+                        type="submit"
+                        className="absolute w-8 h-8 rounded-full flex items-center justify-center bg-blue text-black top-1 right-1"
+                    >
+                        <IoSearchOutline />
+                    </button>
+                </form>
+
+                {/* Searchbar Dropdown Container*/}
+                <ul className="bg-slate-900 w-full text-sm absolute top-11 lg:w-auto lg:ml-4">
+                    {filteredProducts.map((product) => (
+                        <li key={product.id}>
+                            <Link
+                                href={`/product/${product.id}`}
+                                onClick={clearSearch}
+                                className="flex gap-2 border-b-2 border-slate-600 items-center hover:bg-slate-800 duration-300"
+                            >
+                                <div className="relative w-[50px] h-[50px]">
+                                    <Image
+                                        className="object-cover"
+                                        src={product.imgUrl}
+                                        alt={product.name}
+                                        fill
+                                    />
+                                </div>
+                                <p>{product.name}</p>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };
 
 export default SearchInput;
-
-{
-    /* <div className="h-10 flex flex-1 relative md:hidden">
-     */
-}
