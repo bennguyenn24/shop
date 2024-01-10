@@ -1,6 +1,5 @@
 import Image from "next/image";
 import logo from "../public/assets/images/logo.png";
-import { IoSearchOutline } from "react-icons/io5";
 import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import NavbarBottom from "./NavbarBottom";
 import Link from "next/link";
@@ -64,15 +63,7 @@ const Navbar = async () => {
                         isHiddenWhenOnMobileDevice={true}
                         products={products}
                     />
-
-                    <div className="navBarHover hover:bg-gray-600 duration-300">
-                        <AiOutlineHeart />
-                        <div>
-                            <h2 className="font-semibold">My Items</h2>
-                        </div>
-                    </div>
-
-                    <div className="navBarHover hover:bg-gray-600 duration-300">
+                    <div className="md:navBarHover hover:bg-gray-600 duration-300">
                         {!user ? (
                             <Link className="flex gap-1" href="/sign-in">
                                 <AiOutlineUser className="text-lg" />
@@ -91,16 +82,6 @@ const Navbar = async () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        {/* <button
-                            className="md:hidden"
-                            onClick={() => setOpen(!open)}
-                        >
-                            {" "}
-                            <GiHamburgerMenu />
-                        </button> */}
-
-                        {/* Cart */}
-
                         <CartDisplay />
                     </div>
                 </div>

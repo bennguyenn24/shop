@@ -91,7 +91,7 @@ const SearchInput = ({ products, isHiddenWhenOnMobileDevice }: SearchInputParams
                 </form>
 
                 {/* Searchbar Dropdown Container*/}
-                <ul className="bg-slate-900 w-full text-sm absolute top-11 lg:w-auto lg:ml-4">
+                <ul className="bg-slate-900 w-full text-sm absolute top-11 md:w-full">
                     {filteredProducts.map((product) => (
                         <li key={product.id}>
                             <Link
@@ -99,7 +99,7 @@ const SearchInput = ({ products, isHiddenWhenOnMobileDevice }: SearchInputParams
                                 onClick={clearSearch}
                                 className="flex gap-2 border-b-2 border-slate-600 items-center hover:bg-slate-800 duration-300"
                             >
-                                <div className="relative w-[50px] h-[50px]">
+                                <div className="relative w-[50px] h-[50px] lg:ml-4">
                                     <Image
                                         className="object-cover"
                                         src={product.imgUrl}
