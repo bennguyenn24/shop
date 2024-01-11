@@ -41,7 +41,7 @@ const CartPage = () => {
             }
         } catch (error: any) {
             toast.error(
-                "An error occurred during checkout."
+                "Please sign-in to continue to checkout."
             );
             console.error("Error during checkout:", error);
         }
