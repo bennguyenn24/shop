@@ -23,7 +23,7 @@ const page = () => {
             <p className="text-base sm:text-lg mb-4">
             From a young age, Philip displayed an innate talent for agricultural
             pursuits and fishing. His days were spent cultivating the finest
-            crops and nurturing the healthiest livestock. The farm's success was
+            crops and nurturing the healthiest livestock. The farm&apos;s success was
             not only a testament to his hard work but also a reflection of his
             passion for providing people with the finest, most delectable
             produce.  </p>
@@ -33,21 +33,21 @@ const page = () => {
             dish crafted with the utmost care and attention to detail. His dream
             was to bring the essence of the countryside to the plates of
             cosmopolitan diners. Philip aspired to share the treasures of his
-            farm, from the succulent Dry Aged RibEye to the luxurious Caviar and
-            the marbled perfection of Japanese A5 Wagyu. 
+            farm, from the succulent Dry Aged Ribeye to the luxurious Caviar and
+            the marbled perfection of Japanese A5 Wagyu and many more. 
             </p>
             <p className="text-base sm:text-lg mb-4">
-            The Steakhouse Society was born out of Philip's determination to
+            The Steakhouse Society was born out of Philip&apos;s determination to
             transcend geographical boundaries and offer a unique culinary
             experience. He worked tirelessly to curate a menu that celebrated
-            the richness of his farm's produce, bringing together flavors that
+            the richness of his farm&apos;s produce, bringing together flavors that
             captivated the taste buds and left a lasting impression on those
             fortunate enough to indulge. 
             </p>
             <p className="text-base sm:text-lg mb-4">
             But Philip knew that to truly share his vision with the world, he
             needed a digital presence that matched the excellence of his
-            offerings. Enter Ben the Doug, Philip's tech-savvy brother, who had
+            offerings. Enter Ben the Doug, Philip&apos;s tech-savvy brother, who had
             a knack for turning ideas into captivating online experiences.
             Recognizing the potential to showcase their culinary creations to a
             global audience, Ben set out to create a website that would not only
@@ -55,7 +55,7 @@ const page = () => {
             e-commerce transactions. 
             </p>
             <p className="text-base sm:text-lg mb-4">
-            For the Steakhouse Society's online platform, Ben chose Next.js 13
+            For the Steakhouse Society&apos;s online platform, Ben chose Next.js 13
             as the foundation. Its flexibility and speed were crucial in
             delivering a smooth and immersive user experience. To handle the
             database, he opted for Supabase, leveraging its scalability and
@@ -72,9 +72,9 @@ const page = () => {
             joy to navigate. 
             </p>
             <p className="text-base sm:text-lg mb-4">
-            In the end, the collaboration between Philip the Doug's agricultural
-            prowess and Ben the Doug's tech wizardry birthed an online haven for
-            culinary enthusiasts. The Steakhouse Society's website became a
+            In the end, the collaboration between Philip the Doug&apos;s agricultural
+            prowess and Ben the Doug&apos;s tech wizardry birthed an online haven for
+            culinary enthusiasts. The Steakhouse Society&apos;s website became a
             gateway for patrons worldwide to embark on a gastronomic journey,
             experiencing the unparalleled flavors of the countryside, delivered
             to their doorstep with just a click. <br />
